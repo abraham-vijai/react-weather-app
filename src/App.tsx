@@ -21,7 +21,7 @@ import {
   todaySectionStyle,
   todayTextStyle,
   weatherCardsStyle,
-} from "./styles/styles"; // Import styles
+} from "./styles/styles";
 
 function App() {
   const [isMenuOpen, setMenuVisibility] = useState(false);

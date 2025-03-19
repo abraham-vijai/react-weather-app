@@ -25,15 +25,15 @@ const WeatherCard = ({
         backgroundColor: "rgba(0, 115, 255, 0.33)",
       }}
     >
-      <text style={{ fontSize: "1.2rem", fontWeight: "bold" }}>
+      <span style={{ fontSize: "1.2rem", fontWeight: "bold" }}>
         {temperature} {tempUnit}
-      </text>
+      </span>
       <img
         src={imgSrc}
         alt="Summer logo"
         style={{ width: 50, height: 50, margin: "10px 0" }}
       />
-      <text style={{ fontSize: "0.9rem" }}>{time}</text>
+      <span style={{ fontSize: "0.9rem" }}>{time}</span>
     </div>
   );
 };
