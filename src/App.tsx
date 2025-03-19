@@ -10,21 +10,31 @@ import { useState } from "react";
 import Modal from "./components/Modal";
 
 function App() {
-  const [isModalOpen, setModalVisibility] = useState(false);
-  const closeModal = () => setModalVisibility(false);
+  const [isMenuOpen, setMenuVisibility] = useState(false);
+  const [isSettingsOpen, setSettingsVisibility] = useState(false);
+  const closeMenu = () => setMenuVisibility(false);
+  const closeSettings = () => setSettingsVisibility(false);
 
   const handleMenuItemClick = (label: string) => {
     console.log(`Clicked on ${label}`);
-    closeModal(); 
+    closeMenu();
   };
-
-  const modalItems = [
+  const handleSettingsItemClick = (label: string) => {
+    console.log(`Clicked on ${label}`);
+    closeSettings(); // Close the settings modal after clicking an item
+  };
+  const menuItems = [
     { label: "Home", onClick: () => handleMenuItemClick("Home") },
     { label: "Profile", onClick: () => handleMenuItemClick("Profile") },
     { label: "Settings", onClick: () => handleMenuItemClick("Settings") },
     { label: "Logout", onClick: () => handleMenuItemClick("Logout") },
   ];
-
+  const settingsItems = [
+    { label: "Theme", onClick: () => handleSettingsItemClick("Theme") },
+    { label: "Notifications", onClick: () => handleSettingsItemClick("Notifications") },
+    { label: "Privacy", onClick: () => handleSettingsItemClick("Privacy") },
+    { label: "Help", onClick: () => handleSettingsItemClick("Help") },
+  ];
   return (
     <div
       style={{
@@ -34,8 +44,8 @@ function App() {
         flexDirection: "column",
         height: "100vh", // Full viewport height
         width: "100vw", // Full viewport width
-        background: "linear-gradient(-50deg, rgb(7, 10, 19), #2575fc)", 
-        color: "white", 
+        background: "linear-gradient(-50deg, rgb(7, 10, 19), #2575fc)",
+        color: "white",
       }}
     >
       {/* Menu and Settings Icons */}
@@ -48,18 +58,24 @@ function App() {
           marginTop: "20px",
         }}
       >
-        <IoMenuSharp onClick={() => setModalVisibility(true)} />
-        <IoSettingsOutline onClick={() => console.log("clicked on settings")} />
+        <IoMenuSharp onClick={() => setMenuVisibility(true)} />
+        <IoSettingsOutline onClick={() => setSettingsVisibility(true)} />
       </div>
 
-      {/* Modal */}
+      {/* Menu Modal */}
       <Modal
         heading="Menu"
-        isModalOpen={isModalOpen}
-        closeModal={closeModal}
-        items={modalItems}
+        isModalOpen={isMenuOpen}
+        closeModal={closeMenu}
+        items={menuItems}
       />
-
+      {/* Settings Modal */}
+      <Modal
+        heading="Settings"
+        isModalOpen={isSettingsOpen}
+        closeModal={closeSettings}
+        items={settingsItems}
+      />
       {/* Temperature, City, and Date */}
       <div
         style={{
