@@ -3,20 +3,22 @@ interface ModalProps {
   isModalOpen: boolean;
   closeModal: () => void;
   items: { label: string; onClick: () => void }[];
+  style: React.CSSProperties;
 }
 
-const Modal = ({ heading, isModalOpen, closeModal, items }: ModalProps) => {
+const Modal = ({
+  heading,
+  isModalOpen,
+  closeModal,
+  items,
+  style,
+}: ModalProps) => {
   return (
     <div
       style={{
-        position: "fixed",
         visibility: isModalOpen ? "visible" : "hidden",
-        width: "100%",
-        height: "100%",
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+
+        ...style,
       }}
       onClick={closeModal}
     >
