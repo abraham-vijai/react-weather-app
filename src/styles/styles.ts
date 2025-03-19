@@ -15,7 +15,7 @@ export const mainDivStyle: CSSProperties = {
 // Modal styles
 export const modalStyle: CSSProperties = {
   backgroundColor: "rgba(0, 0, 0, 0.0)", // Transparent background
-  backdropFilter: "blur(5px)", // Add a blur effect
+  backdropFilter: "blur(7px)", // Add a blur effect
   position: "fixed",
   width: "100%",
   height: "100%",
@@ -78,6 +78,7 @@ export const todaySectionStyle: CSSProperties = {
   paddingLeft: "10px",
 };
 
+// Today text styles
 export const todayTextStyle: CSSProperties = {
   fontSize: "1.5rem",
   fontWeight: "bold",
