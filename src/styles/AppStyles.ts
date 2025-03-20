@@ -64,7 +64,7 @@ export const weatherLogoStyle: CSSProperties = {
 };
 
 // Weather icons container styles
-export const weatherIconsStyle: CSSProperties = {
+export const weatherIconStyle: CSSProperties = {
   display: "flex",
   width: "100%",
   justifyContent: "space-between",
