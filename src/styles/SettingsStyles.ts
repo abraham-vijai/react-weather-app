@@ -9,6 +9,21 @@ export const mainDivStyle: CSSProperties = {
   flexDirection: "column",
 };
 
+export const profileDivStyle: CSSProperties = {
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  paddingBottom: 20,
+};
+
+export const settingsTextStyle: CSSProperties = {
+  display: "flex",
+  alignSelf: "flex-start",
+  margin: 15,
+  fontSize: "2.0rem",
+};
+
 export const locationIconStyle: CSSProperties = {
   display: "flex",
   alignItems: "center",
@@ -18,7 +33,6 @@ export const locationIconStyle: CSSProperties = {
 };
 
 export const profileCircleStyle: CSSProperties = {
-  
   height: "100px",
   width: "100px",
   backgroundColor: "lime",
@@ -36,7 +50,7 @@ export const settingsOptionStyle: CSSProperties = {
   margin: "10px",
   padding: 10,
   fontSize: "1.5rem",
-}
+};
 
 export const settingsSectionStyle: CSSProperties = {
   display: "flex",
@@ -51,10 +65,10 @@ export const settingsSectionStyle: CSSProperties = {
   borderRadius: "20px 20px 0 0",
 };
 
-export const settingsIconDivStyle: CSSProperties={
+export const settingsIconDivStyle: CSSProperties = {
   width: "100%",
   display: "flex",
-  justifyContent: 'space-between',
-  alignContent: 'center',
-  flexDirection: 'column'
+  justifyContent: "space-between",
+  alignContent: "center",
+  flexDirection: "column",
 };

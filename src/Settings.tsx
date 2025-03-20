@@ -4,7 +4,7 @@ import {
   MdDarkMode,
   MdCircleNotifications,
 } from "react-icons/md";
-import { FaExclamationCircle } from "react-icons/fa";
+import { FaExclamationCircle, FaTemperatureHigh } from "react-icons/fa";
 import {
   mainDivStyle,
   locationIconStyle,
@@ -12,6 +12,8 @@ import {
   settingsSectionStyle,
   settingsOptionStyle,
   settingsIconDivStyle,
+  settingsTextStyle,
+  profileDivStyle,
 } from "./styles/SettingsStyles";
 import SettingsOption from "./components/SettingsOption";
 import IOSSwitch from "./components/IOSSwitch";
@@ -20,15 +22,7 @@ import TextIcon from "./components/TextIcon";
 const Settings = () => {
   return (
     <div style={mainDivStyle}>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          paddingBottom: 20,
-        }}
-      >
+      <div style={profileDivStyle}>
         {/* Profile circle */}
         <div style={profileCircleStyle}>
           <span style={{ color: "white", fontSize: "1.5rem" }}>Profile</span>
@@ -47,30 +41,36 @@ const Settings = () => {
 
       {/* Settings section */}
       <div style={settingsSectionStyle}>
-        <span
-          style={{
-            display: "flex",
-            alignSelf: "flex-start",
-            margin: 15,
-            fontSize: "2.0rem",
-          }}
-        >
-          Settings
-        </span>
+        {/* Settings text */}
+        <span style={settingsTextStyle}>Settings</span>
+
         {/* Settings icons div */}
         <div style={settingsIconDivStyle}>
+          {/* Dark Mode */}
           <SettingsOption
             text="Dark Mode"
             primaryIcon={<MdDarkMode />}
             secondaryIcon={<IOSSwitch />}
             style={settingsOptionStyle}
           />
+
+          {/* Notifications */}
           <SettingsOption
             text="Notifications "
             primaryIcon={<MdCircleNotifications />}
             secondaryIcon={<MdKeyboardArrowRight />}
             style={settingsOptionStyle}
           />
+
+          {/* Unit */}
+          <SettingsOption
+            text="Unit"
+            primaryIcon={<FaTemperatureHigh />}
+            secondaryIcon={<MdKeyboardArrowRight />}
+            style={settingsOptionStyle}
+          />
+
+          {/* About */}
           <SettingsOption
             text="About"
             primaryIcon={<FaExclamationCircle />}
