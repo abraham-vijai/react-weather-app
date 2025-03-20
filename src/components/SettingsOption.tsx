@@ -30,7 +30,7 @@ const SettingsOption = ({
   return (
     <div style={style}>
       {React.cloneElement(primaryIcon)}
-      <span style={{ display: "flex", position: "absolute", left: 80 }}>
+      <span style={{ display: "flex", justifyContent: 'flex-start', position: 'absolute', marginLeft: 60 }}>
         {text}
       </span>
       {React.cloneElement(secondaryIcon)}

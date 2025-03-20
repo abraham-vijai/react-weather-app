@@ -34,9 +34,10 @@ const WeatherCard = ({
         justifyContent: "center",
         border: "1px solid rgb(0, 166, 255)",
         borderRadius: 10,
-        margin: 2,
+        margin: 5,
         padding: 10,
         width: "fit-content",
+        height: "fit-content",
         backgroundColor: "rgba(0, 115, 255, 0.33)",
       }}
     >
@@ -46,9 +47,9 @@ const WeatherCard = ({
       <img
         src={imgSrc}
         alt="Weather icon"
-        style={{ width: 50, height: 50, margin: "10px 0" }}
+        style={{ width: 55, height: 55, margin: "10px 0" }}
       />
-      <span style={{ fontSize: "0.9rem" }}>{time}</span>
+      <span style={{ fontSize: "1.2rem" }}>{time}</span>
     </div>
   );
 };

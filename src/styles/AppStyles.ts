@@ -6,7 +6,7 @@ export const mainDivStyle: CSSProperties = {
   justifyContent: "space-between",
   alignItems: "center",
   flexDirection: "column",
-  height: "100vh", // Full viewport height
+  height: "100%", // Full viewport height
   width: "100vw", // Full viewport width
   background: "linear-gradient(-50deg, rgb(7, 10, 19), #2575fc)",
   color: "white",
@@ -70,6 +70,7 @@ export const weatherIconDivStyle: CSSProperties = {
   fontSize: "1.25rem",
   justifyContent: "space-between",
   alignContent: "center",
+  padding: 30
 };
 
 // Weather icon item style
@@ -98,7 +99,6 @@ export const todayTextStyle: CSSProperties = {
 export const weatherCardsStyle: CSSProperties = {
   display: "flex",
   flexDirection: "row",
-  padding: 10,
   overflowX: "auto",
   whiteSpace: "nowrap",
   width: "100%",
