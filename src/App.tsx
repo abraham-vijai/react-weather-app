@@ -22,26 +22,22 @@ import {
   weatherCardsStyle,
   weatherIconStyle,
 } from "./styles/AppStyles";
+import Settings from "./Settings";
+
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 function App() {
   const [isMenuOpen, setMenuVisibility] = useState(false);
-  const [isSettingsOpen, setSettingsVisibility] = useState(false);
   const [weatherData, setWeatherData] = useState<any>(null);
   const [forecastData, setForecastData] = useState<any[]>([]);
 
   const closeMenu = () => setMenuVisibility(false);
-  const closeSettings = () => setSettingsVisibility(false);
 
   const handleMenuItemClick = (label: string) => {
     console.log(`Clicked on ${label}`);
     closeMenu();
-  };
-
-  const handleSettingsItemClick = (label: string) => {
-    console.log(`Clicked on ${label}`);
-    closeSettings();
   };
 
   const menuItems = [
@@ -51,15 +47,6 @@ function App() {
     { label: "Logout", onClick: () => handleMenuItemClick("Logout") },
   ];
 
-  const settingsItems = [
-    { label: "Theme", onClick: () => handleSettingsItemClick("Theme") },
-    {
-      label: "Notifications",
-      onClick: () => handleSettingsItemClick("Notifications"),
-    },
-    { label: "Privacy", onClick: () => handleSettingsItemClick("Privacy") },
-    { label: "Help", onClick: () => handleSettingsItemClick("Help") },
-  ];
   // Fetch 5-day/3-hour forecast data
   useEffect(() => {
     const fetchForecast = async (city: string) => {
@@ -136,115 +123,126 @@ function App() {
     search("Kitchener");
   }, []);
   return (
-    <div style={mainDivStyle}>
-      {/* Menu and Settings Icons */}
-      <div style={headerStyle}>
-        <IoMenuSharp
-          onClick={() => setMenuVisibility(true)}
-          style={{ cursor: "pointer" }}
+    <Router>
+      <Routes>
+        {/* Home Route */}
+        <Route
+          path="/"
+          element={
+            <div style={mainDivStyle}>
+              {/* Menu and Settings Icons */}
+              <div style={headerStyle}>
+                <IoMenuSharp
+                  onClick={() => setMenuVisibility(true)}
+                  style={{ cursor: "pointer" }}
+                />
+                {/* Navigate to settings page */}
+                <Link to="/Settings">
+                  <IoSettingsOutline style={{ cursor: "pointer" }} />
+                </Link>
+              </div>
+              {/* Menu Modal */}
+              <Modal
+                heading="Menu"
+                isModalOpen={isMenuOpen}
+                closeModal={closeMenu}
+                items={menuItems}
+                style={modalStyle}
+              />
+              {/* Temperature, City, and Date */}
+              <div style={tempCityDateStyle}>
+                {/* Temperature */}
+                <div>
+                  <span style={tempTextStyle}>
+                    {weatherData
+                      ? `${Math.round(weatherData.main.temp)} °C`
+                      : "Loading..."}
+                  </span>
+                </div>
+                {/* City and Date */}
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "flex-end",
+                  }}
+                >
+                  <span style={cityTextStyle}>
+                    {weatherData ? weatherData.name : "Loading..."}
+                  </span>
+                  <span style={dateTextStyle}>
+                    {weatherData
+                      ? formatDate(weatherData.dt, weatherData.timezone)
+                      : "Loading..."}
+                  </span>
+                </div>
+              </div>
+              {/* Weather Logo */}
+              <img
+                src={weatherLogo}
+                alt="Weather logo"
+                style={weatherLogoStyle}
+              />
+              {/* Weather Details */}
+              <TextGroup
+                text={
+                  weatherData
+                    ? `Feels like ${Math.round(weatherData.main.temp)} °C`
+                    : "Loading..."
+                }
+              />
+              <TextGroup text="Expected high rain today" />
+              {/* Weather Icons */}
+              <div style={weatherIconDivStyle}>
+                <TextIcon
+                  icon={<FaWind />}
+                  style={weatherIconStyle}
+                  text={
+                    weatherData
+                      ? `${weatherData.wind.speed} km/h`
+                      : "Loading..."
+                  }
+                />
+                <TextIcon
+                  icon={<CiDroplet />}
+                  style={weatherIconStyle}
+                  text={
+                    weatherData
+                      ? `${weatherData.main.humidity} %`
+                      : "Loading..."
+                  }
+                />
+                <TextIcon
+                  icon={<FaSun />}
+                  style={weatherIconStyle}
+                  text="8 hr"
+                />
+              </div>
+              {/* Today Section */}
+              <div style={todaySectionStyle}>
+                <span style={todayTextStyle}>Today</span>
+              </div>
+              {/* Weather Cards */}
+              <div style={weatherCardsStyle}>
+                {forecastData.map((day, index) => (
+                  <WeatherCard
+                    key={index}
+                    temperature={day.temperature}
+                    tempUnit="°C"
+                    time={new Date(day.date).toLocaleDateString("en-US", {
+                      weekday: "short",
+                    })}
+                    imgSrc={`http://openweathermap.org/img/wn/${day.icon}@2x.png`}
+                  />
+                ))}
+              </div>
+            </div>
+          }
         />
-        <IoSettingsOutline
-          onClick={() => setSettingsVisibility(true)}
-          style={{ cursor: "pointer" }}
-        />
-      </div>
-
-      {/* Menu Modal */}
-      <Modal
-        heading="Menu"
-        isModalOpen={isMenuOpen}
-        closeModal={closeMenu}
-        items={menuItems}
-        style={modalStyle}
-      />
-
-      {/* Settings Modal */}
-      <Modal
-        heading="Settings"
-        isModalOpen={isSettingsOpen}
-        closeModal={closeSettings}
-        items={settingsItems}
-        style={modalStyle}
-      />
-
-      {/* Temperature, City, and Date */}
-      <div style={tempCityDateStyle}>
-        {/* Temperature */}
-        <div>
-          <span style={tempTextStyle}>
-            {weatherData
-              ? `${Math.round(weatherData.main.temp)} °C`
-              : "Loading..."}
-          </span>
-        </div>
-
-        {/* City and Date */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-end",
-          }}
-        >
-          <span style={cityTextStyle}>
-            {weatherData ? weatherData.name : "Loading..."}
-          </span>
-          <span style={dateTextStyle}>
-            {weatherData
-              ? formatDate(weatherData.dt, weatherData.timezone)
-              : "Loading..."}
-          </span>
-        </div>
-      </div>
-
-      {/* Weather Logo */}
-      <img src={weatherLogo} alt="Weather logo" style={weatherLogoStyle} />
-
-      {/* Weather Details */}
-      <TextGroup
-        text={
-          weatherData
-            ? `Feels like ${Math.round(weatherData.main.temp)} °C`
-            : "Loading..."
-        }
-      />
-      <TextGroup text="Expected high rain today" />
-
-      {/* Weather Icons */}
-      <div style={weatherIconDivStyle}>
-        <TextIcon
-          icon={<FaWind />}
-          style={weatherIconStyle}
-          text={weatherData ? `${weatherData.wind.speed} km/h` : "Loading..."}
-        />
-        <TextIcon
-          icon={<CiDroplet />}
-          style={weatherIconStyle}
-          text={weatherData ? `${weatherData.main.humidity} %` : "Loading..."}
-        />
-        <TextIcon icon={<FaSun />} style={weatherIconStyle} text="8 hr" />
-      </div>
-
-      {/* Today Section */}
-      <div style={todaySectionStyle}>
-        <span style={todayTextStyle}>Today</span>
-      </div>
-
-      {/* Weather Cards */}
-      <div style={weatherCardsStyle}>
-        {forecastData.map((day, index) => (
-          <WeatherCard
-            key={index}
-            temperature={day.temperature}
-            tempUnit="°C"
-            time={new Date(day.date).toLocaleDateString("en-US", {
-              weekday: "short",
-            })}
-            imgSrc={`http://openweathermap.org/img/wn/${day.icon}@2x.png`}
-          />
-        ))}
-      </div>
-    </div>
+        {/* Settings Route */}
+        <Route path="/settings" element={<Settings />} />
+      </Routes>
+    </Router>
   );
 }
 
