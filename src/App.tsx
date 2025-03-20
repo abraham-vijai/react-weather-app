@@ -16,10 +16,11 @@ import {
   cityTextStyle,
   dateTextStyle,
   weatherLogoStyle,
-  weatherIconsStyle,
+  weatherIconDivStyle,
   todaySectionStyle,
   todayTextStyle,
   weatherCardsStyle,
+  weatherIconStyle,
 } from "./styles/AppStyles";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -210,16 +211,18 @@ function App() {
       <TextGroup text="Expected high rain today" />
 
       {/* Weather Icons */}
-      <div style={weatherIconsStyle}>
+      <div style={weatherIconDivStyle}>
         <TextIcon
           icon={<FaWind />}
+          style={weatherIconStyle}
           text={weatherData ? `${weatherData.wind.speed} km/h` : "Loading..."}
         />
         <TextIcon
           icon={<CiDroplet />}
+          style={weatherIconStyle}
           text={weatherData ? `${weatherData.main.humidity} %` : "Loading..."}
         />
-        <TextIcon icon={<FaSun />} text="8 hr" />
+        <TextIcon icon={<FaSun />} style={weatherIconStyle} text="8 hr" />
       </div>
 
       {/* Today Section */}

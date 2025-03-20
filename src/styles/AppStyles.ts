@@ -64,10 +64,20 @@ export const weatherLogoStyle: CSSProperties = {
 };
 
 // Weather icons container styles
+export const weatherIconDivStyle: CSSProperties = {
+  display: "flex",
+  width: "90%",
+  fontSize: "1.25rem",
+  justifyContent: "space-between",
+  alignContent: "center",
+};
+
+// Weather icon item style
 export const weatherIconStyle: CSSProperties = {
   display: "flex",
-  width: "100%",
-  justifyContent: "space-between",
+  justifyContent: "center",
+  alignItems: "center",
+  flexDirection: "column",
 };
 
 // Today section styles
