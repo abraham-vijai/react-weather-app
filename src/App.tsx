@@ -1,9 +1,3 @@
-import weatherLogo from "./assets/weather.svg";
-import summerLogo from "./assets/summer.svg";
-import TextGroup from "./components/TextGroup";
-import TextIcon from "./components/TextIcon";
-import WeatherCard from "./components/WeatherCard";
-import Modal from "./components/Modal";
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { FaWind, FaSun } from "react-icons/fa";
@@ -18,12 +12,18 @@ import {
   cityTextStyle,
   dateTextStyle,
   weatherLogoStyle,
-  weatherIconsStyle,
+  weatherIconStyle,
   todaySectionStyle,
   todayTextStyle,
   weatherCardsStyle,
-} from "./styles/styles";
+} from "./styles/AppStyles";
 import Settings from "./Settings";
+import weatherLogo from "./assets/weather.svg";
+import summerLogo from "./assets/summer.svg";
+import TextGroup from "./components/TextGroup";
+import TextIcon from "./components/TextIcon";
+import WeatherCard from "./components/WeatherCard";
+import Modal from "./components/Modal";
 
 function App() {
   const [isMenuOpen, setMenuVisibility] = useState(false);
@@ -102,7 +102,7 @@ function App() {
               <TextGroup text="Expected high rain today" />
 
               {/* Weather Icons */}
-              <div style={weatherIconsStyle}>
+              <div style={weatherIconStyle}>
                 <TextIcon icon={<FaWind />} text="11 km/hr" />
                 <TextIcon icon={<CiDroplet />} text="0.02%" />
                 <TextIcon icon={<FaSun />} text="8 hr" />
