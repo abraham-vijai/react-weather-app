@@ -20,7 +20,7 @@ import {
   todaySectionStyle,
   todayTextStyle,
   weatherCardsStyle,
-} from "./styles/styles";
+} from "./styles/AppStyles";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
