@@ -4,6 +4,21 @@ interface WeatherCardProps {
   imgSrc: string;
   time: string;
 }
+
+/**
+ * Component: WeatherCard.tsx
+ *
+ * Description: A component that displays weather information, including temperature, a weather icon, and the time.
+ *
+ * Props:
+ * @param {number} temperature - The temperature value to display.
+ * @param {string} tempUnit - The unit of the temperature (e.g., "°C" or "°F").
+ * @param {string} imgSrc - The source URL of the weather icon image.
+ * @param {string} time - The time or date to display (e.g., "Mon" or "10 AM").
+ *
+ * Returns:
+ * @returns {JSX.Element} - The rendered WeatherCard component.
+ */
 const WeatherCard = ({
   temperature,
   tempUnit,
@@ -30,7 +45,7 @@ const WeatherCard = ({
       </span>
       <img
         src={imgSrc}
-        alt="Summer logo"
+        alt="Weather icon"
         style={{ width: 50, height: 50, margin: "10px 0" }}
       />
       <span style={{ fontSize: "0.9rem" }}>{time}</span>
