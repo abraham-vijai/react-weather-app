@@ -1,25 +1,16 @@
 import React from "react";
 
 interface TextIconProps {
-  icon: React.ReactElement; // This allows any React element to be passed as an icon
+  icon: React.ReactElement;
   text: string;
+  style?: React.CSSProperties; 
 }
 
-const TextIcon: React.FC<TextIconProps> = ({ icon, text }) => {
+const TextIcon = ({ icon, text, style }: TextIconProps) => {
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        flexDirection: "column",
-        fontSize: "1.2rem",
-        margin: 10,
-        padding: 20
-      }}
-    >
+    <div style={style}>
       {React.cloneElement(icon)}
-      {/* Render the icon with optional styling */}
-      <span>{text}</span> {/* Use a span for the text */}
+      <span>{text}</span> 
     </div>
   );
 };
