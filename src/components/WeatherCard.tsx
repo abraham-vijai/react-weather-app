@@ -34,10 +34,8 @@ const WeatherCard = ({
         justifyContent: "center",
         border: "1px solid rgb(0, 166, 255)",
         borderRadius: 10,
-        margin: 5,
+        marginLeft: 10,
         padding: 10,
-        width: "fit-content",
-        height: "fit-content",
         backgroundColor: "rgba(0, 115, 255, 0.33)",
       }}
     >

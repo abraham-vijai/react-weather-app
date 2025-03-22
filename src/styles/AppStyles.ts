@@ -73,6 +73,17 @@ export const weatherIconDivStyle: CSSProperties = {
   padding: 30
 };
 
+// Menu modal styles
+export const menuModalDivStyle: CSSProperties = {
+  backgroundColor: "rgba(193, 185, 185, 0.7)",
+  padding: "20px",
+  borderRadius: "10px",
+  width: "80%",
+  height: "90%",
+  color: "black",
+  fontSize: "1.5rem",
+}
+
 // Weather icon item style
 export const weatherIconStyle: CSSProperties = {
   display: "flex",
@@ -96,7 +107,7 @@ export const todayTextStyle: CSSProperties = {
 };
 
 // Weather cards container styles
-export const weatherCardsStyle: CSSProperties = {
+export const weatherCardDivStyle: CSSProperties = {
   display: "flex",
   flexDirection: "row",
   overflowX: "auto",
