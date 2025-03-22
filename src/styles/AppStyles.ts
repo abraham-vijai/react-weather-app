@@ -12,18 +12,6 @@ export const mainDivStyle: CSSProperties = {
   color: "white",
 };
 
-// Modal styles
-export const modalStyle: CSSProperties = {
-  backgroundColor: "rgba(0, 0, 0, 0.0)", // Transparent background
-  backdropFilter: "blur(7px)", // Add a blur effect
-  position: "fixed",
-  width: "100%",
-  height: "100%",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-};
-
 // Header styles (menu and settings icons)
 export const headerStyle: CSSProperties = {
   display: "flex",
@@ -73,15 +61,28 @@ export const weatherIconDivStyle: CSSProperties = {
   padding: 30
 };
 
+// Modal styles
+export const modalStyle: CSSProperties = {
+  backgroundColor: "rgba(0, 0, 0, 0.0)", // Transparent background
+  backdropFilter: "blur(3px)", // Add a blur effect
+  position: "fixed",
+  width: "100%",
+  height: "100%",
+  display: "flex",
+  justifyContent: "flex-start",
+  alignItems: "center",
+};
+
 // Menu modal styles
 export const menuModalDivStyle: CSSProperties = {
   backgroundColor: "rgba(193, 185, 185, 0.7)",
-  padding: "20px",
-  borderRadius: "10px",
-  width: "80%",
-  height: "90%",
+  display: "flex",
+  flexDirection: "column",
+  padding: 10,
+  width: "60%",
+  height: "100%",
   color: "black",
-  fontSize: "1.5rem",
+  fontSize: "1.2rem",
 }
 
 // Weather icon item style

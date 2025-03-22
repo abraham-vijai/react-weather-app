@@ -1,5 +1,7 @@
+import { menuModalDivStyle } from "../styles/AppStyles";
+
 interface ModalProps {
-  heading: string;
+  heading?: string;
   isModalOpen: boolean;
   closeModal: () => void;
   items: { label: string; onClick: () => void }[];
@@ -38,19 +40,11 @@ const Modal = ({
       }}
       onClick={closeModal}
     >
+      
       <div
-        style={{
-          backgroundColor: "rgba(193, 185, 185, 0.7)",
-          padding: "20px",
-          borderRadius: "10px",
-          width: "80%",
-          height: "90%",
-          color: "black",
-          fontSize: "1.5rem",
-        }}
+        style={menuModalDivStyle}
         onClick={(e) => e.stopPropagation()}
       >
-        <h2>{heading}</h2>
         <ul style={{ listStyle: "none", padding: 0 }}>
           {items.map((item, index) => (
             <li

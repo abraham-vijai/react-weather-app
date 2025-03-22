@@ -39,6 +39,7 @@ function App() {
     { label: "Profile", onClick: () => handleMenuItemClick("Profile") },
     { label: "Settings", onClick: () => handleMenuItemClick("Settings") },
     { label: "Logout", onClick: () => handleMenuItemClick("Logout") },
+    { label: "Close", onClick: () => closeMenu()},
   ];
 
   // -----------------------------------------------
@@ -83,26 +84,31 @@ function App() {
    * @returns {any[]} - An array of grouped daily forecast data.
    */
   const groupForecastByDay = (forecastList: any[]) => {
+    // Used to store the forecast data grouped by date
     const grouped: { [key: string]: any[] } = {};
 
+    // Iterate over each item in forecastList
     forecastList.forEach((item) => {
-      // Convert the timestamp to a Date object
+      // Convert UNIX timestamp to date object
       const date = new Date(item.dt * 1000);
       // Use the date in "YYYY-MM-DD" format as the key
       const dateKey = date.toISOString().split("T")[0];
 
+      // Initialize the 'grouped' array for the first time
       if (!grouped[dateKey]) {
         grouped[dateKey] = [];
       }
+      // Push the item to the array
       grouped[dateKey].push(item);
     });
-
+    // Convert grouped data into an array of daily forecasts
     return Object.keys(grouped).map((dateKey) => {
       const dailyItems = grouped[dateKey];
+      // Use the first item of the day for simplicity
       const firstItem = dailyItems[0];
 
       return {
-        date: new Date(dateKey), // Store the date as a Date object
+        date: new Date(dateKey),
         temperature: Math.round(firstItem.main.temp),
         weather: firstItem.weather[0].main,
         icon: firstItem.weather[0].icon,
@@ -308,7 +314,7 @@ function App() {
                   temperature={day.temperature}
                   tempUnit="°C"
                   time={day.date.toLocaleDateString("en-US", {
-                    weekday: "short", // Display the day of the week (e.g., "Mon")
+                    weekday: "short",
                   })}
                   imgSrc={`http://openweathermap.org/img/wn/${day.icon}@4x.png`}
                 />
