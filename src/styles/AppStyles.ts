@@ -8,7 +8,7 @@ export const mainDivStyle: CSSProperties = {
   flexDirection: "column",
   height: "100%", // Full viewport height
   width: "100vw", // Full viewport width
-  background: "linear-gradient(-50deg, rgb(7, 10, 19), #2575fc)",
+  background: "linear-gradient(-50deg, rgb(207, 17, 150), #2575fc)",
   color: "white",
 };
 
@@ -25,8 +25,11 @@ export const headerStyle: CSSProperties = {
 export const tempCityDateStyle: CSSProperties = {
   display: "flex",
   justifyContent: "space-between",
+  borderRadius: 10,
+  padding: 10,
   alignItems: "center",
-  width: "95vw",
+  width: "90vw",
+
 };
 
 // Temperature text styles
@@ -63,8 +66,8 @@ export const weatherIconDivStyle: CSSProperties = {
 
 // Modal styles
 export const modalStyle: CSSProperties = {
-  backgroundColor: "rgba(0, 0, 0, 0.0)", // Transparent background
-  backdropFilter: "blur(3px)", // Add a blur effect
+  backgroundColor: "rgba(0, 0, 0, 0.0)", 
+  backdropFilter: "blur(3px)", 
   position: "fixed",
   width: "100%",
   height: "100%",

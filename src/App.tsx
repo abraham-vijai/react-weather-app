@@ -18,12 +18,12 @@ import {
 } from "./styles/AppStyles";
 import { Routes, Route, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import weatherLogo from "./assets/weather.svg";
 import TextGroup from "./components/TextGroup";
 import TextIcon from "./components/TextIcon";
 import WeatherCard from "./components/WeatherCard";
 import Modal from "./components/Modal";
 import Settings from "./Settings";
+import TouchableOpacity from "./components/TouchableOpacity";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -39,7 +39,7 @@ function App() {
     { label: "Profile", onClick: () => handleMenuItemClick("Profile") },
     { label: "Settings", onClick: () => handleMenuItemClick("Settings") },
     { label: "Logout", onClick: () => handleMenuItemClick("Logout") },
-    { label: "Close", onClick: () => closeMenu()},
+    { label: "Close", onClick: () => closeMenu() },
   ];
 
   // -----------------------------------------------
@@ -136,7 +136,10 @@ function App() {
       day: "numeric",
     });
   };
-
+  
+  const handleWeatherDisplay = () => {
+    console.log("Button pressed!");
+  };
   // -----------------------------------------------
   // USE EFFECT
   // -----------------------------------------------
@@ -198,6 +201,7 @@ function App() {
 
     search("Kitchener");
   }, []);
+  // console.log();
 
   // -----------------------------------------------
   // RETURN
@@ -232,37 +236,48 @@ function App() {
             />
 
             {/* Temperature, City, and Date */}
-            <div style={tempCityDateStyle}>
-              {/* Temperature */}
-              <div>
-                <span style={tempTextStyle}>
-                  {weatherData
-                    ? `${Math.round(weatherData.main.temp)} °C`
-                    : "Loading..."}
-                </span>
+            <TouchableOpacity
+              style={{
+                display: "flex",
+                padding: 5,
+                border: "none",
+                outline: "none",
+                backgroundColor: "transparent",
+              }}
+              onClick={handleWeatherDisplay}
+            >
+              <div style={tempCityDateStyle}>
+                {/* Temperature */}
+                <div>
+                  <span style={tempTextStyle}>
+                    {weatherData
+                      ? `${Math.round(weatherData.main.temp)} °C`
+                      : "Loading..."}
+                  </span>
+                </div>
+                {/* City and Date */}
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "flex-end",
+                  }}
+                >
+                  <span style={cityTextStyle}>
+                    {weatherData ? weatherData.name : "Loading..."}
+                  </span>
+                  <span style={dateTextStyle}>
+                    {weatherData
+                      ? formatDate(weatherData.dt, weatherData.timezone)
+                      : "Loading..."}
+                  </span>
+                </div>
               </div>
-              {/* City and Date */}
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "flex-end",
-                }}
-              >
-                <span style={cityTextStyle}>
-                  {weatherData ? weatherData.name : "Loading..."}
-                </span>
-                <span style={dateTextStyle}>
-                  {weatherData
-                    ? formatDate(weatherData.dt, weatherData.timezone)
-                    : "Loading..."}
-                </span>
-              </div>
-            </div>
+            </TouchableOpacity>
 
             {/* Weather Logo */}
             <img
-              src={weatherLogo}
+              src={weatherData ? `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@4x.png` : "Loading..."}
               alt="Weather logo"
               style={weatherLogoStyle}
             />
