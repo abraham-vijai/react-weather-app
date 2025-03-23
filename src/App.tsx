@@ -15,6 +15,7 @@ import {
   todayTextStyle,
   weatherCardDivStyle,
   weatherIconStyle,
+  menuModalDivStyle,
 } from "./styles/AppStyles";
 import { Routes, Route, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -136,10 +137,11 @@ function App() {
       day: "numeric",
     });
   };
-  
+  // Function to handle when main weather display is clicked
   const handleWeatherDisplay = () => {
     console.log("Button pressed!");
   };
+
   // -----------------------------------------------
   // USE EFFECT
   // -----------------------------------------------
@@ -193,6 +195,7 @@ function App() {
         }&units=metric`; // Use metric units for Celsius
         const response = await fetch(url);
         const data = await response.json();
+        console.log(data);
         setWeatherData(data); // Store the fetched data in state
       } catch (error) {
         console.error("Error fetching weather data:", error);
@@ -201,7 +204,6 @@ function App() {
 
     search("Kitchener");
   }, []);
-  // console.log();
 
   // -----------------------------------------------
   // RETURN
@@ -228,12 +230,27 @@ function App() {
 
             {/* Menu Modal */}
             <Modal
-              heading="Menu"
               isModalOpen={isMenuOpen}
               closeModal={closeMenu}
-              items={menuItems}
               style={modalStyle}
-            />
+            >
+              <div
+                style={menuModalDivStyle}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <ul style={{ listStyle: "none", padding: 0 }}>
+                  {menuItems.map((item, index) => (
+                    <li
+                      key={index}
+                      style={{ padding: 10, cursor: "pointer" }}
+                      onClick={item.onClick}
+                    >
+                      {item.label}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Modal>
 
             {/* Temperature, City, and Date */}
             <TouchableOpacity
@@ -277,7 +294,11 @@ function App() {
 
             {/* Weather Logo */}
             <img
-              src={weatherData ? `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@4x.png` : "Loading..."}
+              src={
+                weatherData
+                  ? `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@4x.png`
+                  : "Loading..."
+              }
               alt="Weather logo"
               style={weatherLogoStyle}
             />
@@ -301,7 +322,9 @@ function App() {
                 icon={<FaWind />}
                 style={weatherIconStyle}
                 text={
-                  weatherData ? `${weatherData.wind.speed} km/h` : "Loading..."
+                  weatherData
+                    ? `${Math.round(weatherData.wind.speed * 3.6)} km/h`
+                    : "Loading..."
                 }
               />
               {/* Droplet Icon */}
@@ -324,15 +347,27 @@ function App() {
             {/* Weather Cards */}
             <div style={weatherCardDivStyle}>
               {forecastData.map((day, index) => (
-                <WeatherCard
-                  key={index}
-                  temperature={day.temperature}
-                  tempUnit="°C"
-                  time={day.date.toLocaleDateString("en-US", {
-                    weekday: "short",
-                  })}
-                  imgSrc={`http://openweathermap.org/img/wn/${day.icon}@4x.png`}
-                />
+                <TouchableOpacity
+                  style={{
+                    border: 0,
+                    padding: 0,
+                    outline: "none",
+                    margin: 5,
+                    backgroundColor: "transparent",
+                    borderColor: "transparent",
+                  }}
+                  onClick={() => console.log("clicked")}
+                >
+                  <WeatherCard
+                    key={index}
+                    temperature={day.temperature}
+                    tempUnit="°C"
+                    time={day.date.toLocaleDateString("en-US", {
+                      weekday: "short",
+                    })}
+                    imgSrc={`http://openweathermap.org/img/wn/${day.icon}@4x.png`}
+                  />
+                </TouchableOpacity>
               ))}
             </div>
           </div>

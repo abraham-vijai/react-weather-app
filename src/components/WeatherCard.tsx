@@ -1,3 +1,4 @@
+
 interface WeatherCardProps {
   temperature: number;
   tempUnit: string;
@@ -26,29 +27,29 @@ const WeatherCard = ({
   imgSrc,
 }: WeatherCardProps) => {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        border: "1px solid rgb(0, 166, 255)",
-        borderRadius: 10,
-        marginLeft: 10,
-        padding: 10,
-        backgroundColor: "rgba(0, 115, 255, 0.33)",
-      }}
-    >
-      <span style={{ fontSize: "1.2rem", fontWeight: "bold" }}>
-        {temperature} {tempUnit}
-      </span>
-      <img
-        src={imgSrc}
-        alt="Weather icon"
-        style={{ width: 55, height: 55, margin: "10px 0" }}
-      />
-      <span style={{ fontSize: "1.2rem" }}>{time}</span>
-    </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          border: "1px solid rgb(0, 166, 255)",
+          borderRadius: 10,
+          margin: 0,
+          padding: 10,
+          backgroundColor: "rgba(0, 115, 255, 0.33)",
+        }}
+      >
+        <span style={{ fontSize: "1.2rem", fontWeight: "bold" }}>
+          {temperature} {tempUnit}
+        </span>
+        <img
+          src={imgSrc}
+          alt="Weather icon"
+          style={{ width: 55, height: 55, margin: "10px 0" }}
+        />
+        <span style={{ fontSize: "1.2rem" }}>{time}</span>
+      </div>
   );
 };
 
