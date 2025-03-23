@@ -3,7 +3,7 @@ import { CiDroplet } from "react-icons/ci";
 import { IoSettingsOutline, IoMenuSharp } from "react-icons/io5";
 import {
   mainDivStyle,
-  modalStyle,
+  SidebarStyle,
   headerStyle,
   tempCityDateStyle,
   tempTextStyle,
@@ -15,14 +15,14 @@ import {
   todayTextStyle,
   weatherCardDivStyle,
   weatherIconStyle,
-  menuModalDivStyle,
+  menuSidebarDivStyle,
 } from "./styles/AppStyles";
 import { Routes, Route, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import TextGroup from "./components/TextGroup";
 import TextIcon from "./components/TextIcon";
 import WeatherCard from "./components/WeatherCard";
-import Modal from "./components/Modal";
+import Sidebar from "./components/Sidebar";
 import Settings from "./Settings";
 import TouchableOpacity from "./components/TouchableOpacity";
 
@@ -228,14 +228,17 @@ function App() {
               </Link>
             </div>
 
-            {/* Menu Modal */}
-            <Modal
-              isModalOpen={isMenuOpen}
-              closeModal={closeMenu}
-              style={modalStyle}
+            {/* Menu Sidebar */}
+            <Sidebar
+              isSidebarOpen={isMenuOpen}
+              closeSidebar={closeMenu}
+              style={SidebarStyle}
             >
               <div
-                style={menuModalDivStyle}
+                style={{
+                  ...menuSidebarDivStyle,
+                  transform: isMenuOpen ? "translateX(0)" : "translateX(-100%)", // Slide in when open
+                }}
                 onClick={(e) => e.stopPropagation()}
               >
                 <ul style={{ listStyle: "none", padding: 0 }}>
@@ -250,7 +253,7 @@ function App() {
                   ))}
                 </ul>
               </div>
-            </Modal>
+            </Sidebar>
 
             {/* Temperature, City, and Date */}
             <TouchableOpacity

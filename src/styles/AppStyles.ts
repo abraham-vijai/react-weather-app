@@ -64,20 +64,21 @@ export const weatherIconDivStyle: CSSProperties = {
   padding: 30
 };
 
-// Modal styles
-export const modalStyle: CSSProperties = {
-  backgroundColor: "rgba(0, 0, 0, 0.0)", 
-  backdropFilter: "blur(3px)", 
+// Sidebar styles
+export const SidebarStyle: CSSProperties = {
   position: "fixed",
+  top: 0,
+  left: 0,
   width: "100%",
   height: "100%",
+  backgroundColor: "rgba(0, 0, 0, 0.5)", 
   display: "flex",
   justifyContent: "flex-start",
   alignItems: "center",
 };
 
-// Menu modal styles
-export const menuModalDivStyle: CSSProperties = {
+// Menu Sidebar styles
+export const menuSidebarDivStyle: React.CSSProperties = {
   backgroundColor: "rgba(193, 185, 185, 0.7)",
   display: "flex",
   flexDirection: "column",
@@ -86,7 +87,10 @@ export const menuModalDivStyle: CSSProperties = {
   height: "100%",
   color: "black",
   fontSize: "1.2rem",
-}
+  transform: "translateX(-100%)", // Start off-screen
+  transition: "transform 0.3s ease-in-out", // Slide-in transition
+  
+};
 
 // Weather icon item style
 export const weatherIconStyle: CSSProperties = {
