@@ -49,11 +49,9 @@ const Settings = () => {
         <Dialog open={isImageVisible} onClose={() => setImageVisibility(false)}>
           <img src="https://picsum.photos/200" alt="no image" />
         </Dialog>
-        
+
         {/* User name */}
-        <span style={{ ...locationIconStyle, fontSize: 30 }}>
-          John Smith
-        </span>
+        <span style={{ ...locationIconStyle, fontSize: 30 }}>John Smith</span>
       </div>
 
       {/* Settings section */}
