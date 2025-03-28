@@ -1,4 +1,3 @@
-import { IoLocation } from "react-icons/io5";
 import {
   MdKeyboardArrowRight,
   MdDarkMode,
@@ -17,7 +16,6 @@ import {
 } from "./styles/SettingsStyles";
 import SettingsOption from "./components/SettingsOption";
 import IOSSwitch from "./components/IOSSwitch";
-import TextIcon from "./components/TextIcon";
 import { useState } from "react";
 import TouchableOpacity from "./components/TouchableOpacity";
 import { Dialog } from "@mui/material";
@@ -29,27 +27,31 @@ const Settings = () => {
       <div style={profileDivStyle}>
         {/* Profile circle */}
         <TouchableOpacity
-          style={{ border: 0, padding: 0, margin: 0, borderRadius: "50%" }}
+          style={{
+            border: 0,
+            padding: 0,
+            margin: 5,
+            borderRadius: "50%",
+            outline: "none",
+          }}
           onClick={() => setImageVisibility(true)}
         >
           <div style={profileCircleStyle}>
-            <span style={{ color: "white", fontSize: "1.5rem" }}>Profile</span>
+            <img
+              style={{ overflow: "hidden", borderRadius: "50%" }}
+              src="https://picsum.photos/200"
+              alt="profile image"
+            />
           </div>
         </TouchableOpacity>
+
         {/* Enlarged Image */}
         <Dialog open={isImageVisible} onClose={() => setImageVisibility(false)}>
           <img src="https://picsum.photos/200" alt="no image" />
         </Dialog>
+
         {/* User name */}
-        <span style={{ ...locationIconStyle, fontSize: 30 }}>
-          John Smith
-        </span>{" "}
-        {/* Location */}
-        <TextIcon
-          style={locationIconStyle}
-          text="Vancouver, CA"
-          icon={<IoLocation />}
-        />
+        <span style={{ ...locationIconStyle, fontSize: 30 }}>John Smith</span>
       </div>
 
       {/* Settings section */}
@@ -71,7 +73,7 @@ const Settings = () => {
           <SettingsOption
             text="Notifications "
             primaryIcon={<MdCircleNotifications />}
-            secondaryIcon={<MdKeyboardArrowRight />}
+            secondaryIcon={<IOSSwitch />}
             style={settingsOptionStyle}
           />
 

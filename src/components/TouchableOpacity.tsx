@@ -10,7 +10,7 @@ interface TouchableOpacityProps {
 const TouchableOpacity: React.FC<TouchableOpacityProps> = ({
   onClick,
   children,
-  activeOpacity = 0.5,
+  activeOpacity = 0.1,
   style,
 }) => {
   const [isActive, setIsActive] = useState(false);

@@ -1,4 +1,5 @@
 import React from "react";
+import TouchableOpacity from "./TouchableOpacity";
 
 interface SettingsOptionProps {
   text: string;
@@ -28,13 +29,29 @@ const SettingsOption = ({
   style,
 }: SettingsOptionProps) => {
   return (
-    <div style={style}>
-      {React.cloneElement(primaryIcon)}
-      <span style={{ display: "flex", justifyContent: 'flex-start', position: 'absolute', marginLeft: 60 }}>
-        {text}
-      </span>
-      {React.cloneElement(secondaryIcon)}
-    </div>
+    <TouchableOpacity
+      style={{
+        backgroundColor: "transparent",
+        outline: "none",
+        border: "none",
+      }}
+      onClick={() => console.log("clicked")}
+    >
+      <div style={style}>
+        {React.cloneElement(primaryIcon)}
+        <span
+          style={{
+            display: "flex",
+            justifyContent: "flex-start",
+            position: "absolute",
+            marginLeft: 60,
+          }}
+        >
+          {text}
+        </span>
+        {React.cloneElement(secondaryIcon)}
+      </div>
+    </TouchableOpacity>
   );
 };
 
