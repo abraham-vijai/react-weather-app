@@ -7,6 +7,7 @@ export const mainDivStyle: CSSProperties = {
   height: "100%",
   width: "100vw",
   flexDirection: "column",
+  fontFamily: 'monospace'
 };
 
 export const profileDivStyle: CSSProperties = {
@@ -33,11 +34,11 @@ export const locationIconStyle: CSSProperties = {
 };
 
 export const profileCircleStyle: CSSProperties = {
-  height: "100px",
-  width: "100px",
-  backgroundColor: "lime",
+  height: "150px",
+  width: "150px",
   borderRadius: "50%",
   display: "flex",
+  boxShadow: "0px 0px 15px .05px white",
   justifyContent: "center",
   alignItems: "center",
 };
@@ -60,8 +61,6 @@ export const settingsSectionStyle: CSSProperties = {
   height: "75vh",
   width: "100vw",
   background: "rgb(50, 50, 50)",
-  boxShadow: "0px -5px 25px rgb(50, 50, 50)",
-  color: "white",
   borderRadius: "20px 20px 0 0",
 };
 
