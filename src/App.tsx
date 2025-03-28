@@ -25,6 +25,7 @@ import WeatherCard from "./components/WeatherCard";
 import Sidebar from "./components/Sidebar";
 import Settings from "./Settings";
 import TouchableOpacity from "./components/TouchableOpacity";
+import logo from "./assets/logo.svg";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -141,7 +142,9 @@ function App() {
   const handleWeatherDisplay = () => {
     console.log("Button pressed!");
   };
-
+  const logoElement = (
+    <img src={logo} alt="Wind Icon" style={{ width: "24px", height: "24px" }} />
+  );
   // -----------------------------------------------
   // USE EFFECT
   // -----------------------------------------------
@@ -242,6 +245,9 @@ function App() {
                 onClick={(e) => e.stopPropagation()}
               >
                 <ul style={{ listStyle: "none", padding: 0 }}>
+                  <li>
+                    <h2>My Weather App </h2>
+                  </li>
                   {menuItems.map((item, index) => (
                     <li
                       key={index}
