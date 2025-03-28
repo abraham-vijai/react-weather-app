@@ -30,7 +30,7 @@ const Settings = () => {
           style={{
             border: 0,
             padding: 0,
-            margin: 0,
+            margin: 5,
             borderRadius: "50%",
             outline: "none",
           }}
