@@ -79,13 +79,13 @@ export const SidebarStyle: CSSProperties = {
 
 // Menu Sidebar styles
 export const menuSidebarDivStyle: React.CSSProperties = {
-  backgroundColor: "rgba(193, 185, 185, 0.7)",
+  backgroundColor: "rgb(49, 49, 49)",
   display: "flex",
   flexDirection: "column",
   padding: 10,
   width: "60%",
   height: "100%",
-  color: "black",
+  color: "white",
   fontSize: "1.2rem",
   transform: "translateX(-100%)", // Start off-screen
   transition: "transform 0.3s ease-in-out", // Slide-in transition
